@@ -1,9 +1,10 @@
 // Packages needed for appliction
 const {prompt} = require("inquirer");
 const database = require ('./db');
+const cTable = require('console.table');
 
 
-const promptQuestions = () => {
+const promptUser = () => {
     prompt([
         {
             type: 'list',
@@ -23,13 +24,27 @@ const promptQuestions = () => {
         case 'Update Employee Role':
             updateEmployeeRole();
             break;
+        case 'View All Roles':
+            viewAllRoles();
+            break;
+        case 'Add Role':
+            addRole();
+            break;
+        case 'View All Departments':
+            viewAllDepartments();
+            break;
+        case 'Add Department':
+            addDepartment();
+            break;
         }
+
+
     })
 }
 function viewAllEmployees(){
     database.findAllEmployees().then((result) => {
         console.log(result)
-    }) .then(() => promptQuestions)
+    }) .then(() => promptUser)
 }
 function addEmployee(){
     prompt([
@@ -46,9 +61,21 @@ function addEmployee(){
         database.createEmployee(res)
     })
 }
+
 function updateEmployeeRole(){
+}
+
+function viewAllRoles(){
+}
+
+function addRole(){
 
 }
+
+
+
+
+
 
 // parameter has to be role_id
 
