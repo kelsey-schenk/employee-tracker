@@ -14,6 +14,32 @@ class Database {
             "INSERT INTO employee SET ?", employee
         )
     }
+    removeEmployee(employee_id){
+        return this.connection.promise.query(
+            "DELETE FROM employee WHERE id = ?", employee_id
+        )
+    }
+    updateEmployeeRole(){
+        return this.connection.promise.query(
+            "RES"
+        )
+    }
+    findAllRoles(){
+        return this.connection.promise.query(
+            "SELECT role.id, role.title, department.name as department, role.salary FROM role LEFT JOIN department ON role.department_id = department.id;"
+        )
+    }
+    createRole(role){
+        return this.connection.promise.query(
+            "INSERT INTO role SET ?", role
+        )
+    }
+    removeRole(role_id){
+        return this.connection.promise.query(
+            "DELETE FROM role WHERE id = ?", role_id
+        )
+    }
+    
 }
 
 module.exports = new Database(connection);

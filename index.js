@@ -1,9 +1,10 @@
 // Packages needed for appliction
-const inquirer = require ("inquirer");
+const {prompt} = require("inquirer");
 const database = require ('./db');
 
+
 const promptQuestions = () => {
-    return inquirer.prompt([
+    prompt([
         {
             type: 'list',
             name: 'options',
@@ -14,11 +15,40 @@ const promptQuestions = () => {
     .then ((optionsInput) => {
         switch (optionsInput) {
         case 'View All Employees':
-            return findAllEmployees();
+            viewAllEmployees();
+            break;
         case 'Add Employee':
-            return
+            addEmployee();
+            break;
         case 'Update Employee Role':
-            return
+            updateEmployeeRole();
+            break;
         }
     })
 }
+function viewAllEmployees(){
+    database.findAllEmployees().then((result) => {
+        console.log(result)
+    }) .then(() => promptQuestions)
+}
+function addEmployee(){
+    prompt([
+        {
+            name: 'first_name',
+            message: "What is the employee's first name?",
+        },
+        {
+            name: 'last_name',
+            messge: "What is the employee's last name",
+        }
+    ])
+    .then((res) =>{
+        database.createEmployee(res)
+    })
+}
+function updateEmployeeRole(){
+
+}
+
+// parameter has to be role_id
+
