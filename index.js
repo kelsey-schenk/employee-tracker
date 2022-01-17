@@ -1,6 +1,6 @@
 // Packages needed for appliction
 const {prompt} = require("inquirer");
-const database = require ('./db');
+const database = require('./db/database')
 const cTable = require('console.table');
 
 
@@ -13,6 +13,7 @@ const promptUser = () => {
             choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
         }
     ])
+
     .then ((optionsInput) => {
         switch (optionsInput) {
         case 'View All Employees':
@@ -37,15 +38,15 @@ const promptUser = () => {
             addDepartment();
             break;
         }
-
-
     })
 }
+
 function viewAllEmployees(){
     database.findAllEmployees().then((result) => {
         console.log(result)
     }) .then(() => promptUser)
 }
+
 function addEmployee(){
     prompt([
         {
@@ -71,6 +72,10 @@ function viewAllRoles(){
 function addRole(){
 
 }
+
+// function calls
+promptUser();
+viewAllEmployees();
 
 
 
