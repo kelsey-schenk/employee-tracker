@@ -1,6 +1,6 @@
 // Packages needed for appliction
 const {prompt} = require("inquirer");
-const database = require('./db/database')
+const database = require('./db/database');
 const cTable = require('console.table');
 
 
@@ -10,13 +10,42 @@ const promptUser = () => {
             type: 'list',
             name: 'options',
             message: 'What would you like to do? (Use arrow keys)',
-            choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
+            choices: [
+                {
+                    name: 'View All Employees', 
+                    value: 'VIEW_ALL_EMPLOYEES'
+                }, 
+                {
+                    name: 'Add Employee',
+                    value: 'ADD_EMPLOYEE'
+                },
+                {
+                    name: 'Update Employee Role', 
+                    value: 'UPDATE_EMPLOYEE_ROLE'
+                },
+                {
+                    name: 'View All Roles',
+                    value: 'VIEW_ALL_ROLES'
+                },
+                {
+                    name: 'Add Role', 
+                    value: 'ADD_ROLE'
+                },
+                {
+                    name: 'View All Departments',
+                    value: 'VIEW_ALL_DEPARTMENTS',
+                },
+                {
+                    name: 'Add Department',
+                    value: 'ADD_DEPARTMENT'
+                }
+            ]
         }
     ])
 
     .then ((optionsInput) => {
         switch (optionsInput) {
-        case 'View All Employees':
+        case 'VIEW ALL EMPLOYEES':
             viewAllEmployees();
             break;
         case 'Add Employee':

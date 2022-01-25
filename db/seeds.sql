@@ -10,16 +10,16 @@ VALUES
 INSERT INTO role (title, salary, department_id)
 VALUES
     ('Sales Lead', 10000, 1),
-    ('Accountant')
-    ('Account Manager');
+    ('Accountant', 5000, 3),
+    ('Account Manager', 4000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
     ('John', 'Doe', 1, NULL),
     ('Mike', 'Chan', 2, 1),
-    ('Ashley', 'Rodgriguez'),
-    ('Kevin', 'Tupik'),
-    ('Kunal', 'Singh'),
-    ('Malia', 'Brown'),
-    ('Sarah', 'Lourd'),
-    ('Tom', 'Allen'),
+    ('Ashley', 'Rodgriguez', 2, 2),
+    ('Kevin', 'Tupik', 3, 1),
+    ('Kunal', 'Singh', 2, NULL),
+    ('Malia', 'Brown', 3, 1),
+    ('Sarah', 'Lourd', 3, 2),
+    ('Tom', 'Allen', 1, NULL);
